@@ -7,7 +7,7 @@ const { protect, isAdmin } = require('../middleware/authMiddleware');
 
 router.post('/', protect, issueController.upload, issueController.createIssue);
 router.put('/:id', protect, issueController.upload, issueController.updateIssue);
-router.get('/success',protect,isAdmin,  issueController.getResolvedIssues);
+router.get('/success',protect,  issueController.getResolvedIssues);
 router.get('/', issueController.getAllIssues);
 router.get('/mine', protect, issueController.getMyIssues);
 router.get('/high', issueController.getHighSeverityIssues);
