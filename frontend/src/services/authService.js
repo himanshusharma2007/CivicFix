@@ -25,7 +25,7 @@ const authService = {
   // Get user profile
   getProfile: async () => {
     try {
-      const response = await api.post('/auth/profile');
+      const response = await api.get('/auth/profile');
       return response.data;
     } catch (error) {
       throw error.response?.data?.msg || 'Failed to fetch profile';
