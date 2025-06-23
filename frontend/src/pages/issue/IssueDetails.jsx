@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getIssueById, upvoteIssue, addComment, clearError } from '../../redux/slice/issueSlice';
 import { BASE_URL } from '../../config';
+import Loading from '../../components/Loading';
 
 const IssueDetails = () => {
   const { id } = useParams();
@@ -67,7 +68,7 @@ const IssueDetails = () => {
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         {loading ? (
-          <p className="text-gray-600 text-center text-sm">Loading issue details...</p>
+          <Loading message="Fetching issues..." size="md" />
         ) : error ? (
           <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm text-center">
             <p className="text-red-500 text-sm mb-4">

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProfile } from "../../redux/slice/authSlice";
 import { getMyIssues } from "../../redux/slice/issueSlice";
 import { Link } from "react-router-dom";
+import Loading from "../../components/Loading";
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ export default function Profile() {
         </h2>
 
         {authLoading ? (
-          <p className="text-gray-600 text-center text-sm">Loading profile...</p>
+          <Loading message="Loading Profile..." size="md" />
         ) : user ? (
           <div className="grid gap-6 lg:grid-cols-3">
             {/* Profile Card */}
@@ -57,7 +58,7 @@ export default function Profile() {
                     My Reported Issues
                   </h3>
                   {issuesLoading ? (
-                    <p className="text-gray-600 text-center text-sm">Loading issues...</p>
+                    <Loading message="Fetching issues..." size="md" />
                   ) : myIssues.length === 0 ? (
                     <p className="text-gray-500 text-center text-sm">
                       No issues reported yet.
