@@ -1,4 +1,6 @@
 exports.calculateSeverity = (description, title) => {
+    console.log('description', description)
+    console.log('title', title)
     const keywords = {
       high: ['urgent', 'emergency', 'severe', 'critical'],
       medium: ['problem', 'issue', 'broken', 'leak'],

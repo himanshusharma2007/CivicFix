@@ -15,6 +15,7 @@ const issueService = {
       const response = await api.post('/issues', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
+      console.log('Issue created successfully:', response.data);
       return response.data;
     } catch (error) {
       throw error.response?.data?.msg || 'Failed to create issue';

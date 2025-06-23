@@ -4,6 +4,7 @@ const authService = {
   // Sign up a new user
   signup: async (userData) => {
     try {
+      // console.log(userData)
       const response = await api.post('/auth/signup', userData);
       return response.data;
     } catch (error) {

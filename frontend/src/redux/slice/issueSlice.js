@@ -2,9 +2,10 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import issueService from '../../services/issueService';
 
 // Async thunks for issue actions
-export const createIssue = createAsyncThunk('issues/createIssue', async (issueData, { rejectWithValue }) => {
+export const createIssue = createAsyncThunk('issues', async (issueData, { rejectWithValue }) => {
   try {
     const response = await issueService.createIssue(issueData);
+    // console.log(issueData)
     return response;
   } catch (error) {
     return rejectWithValue(error);
@@ -14,6 +15,7 @@ export const createIssue = createAsyncThunk('issues/createIssue', async (issueDa
 export const getAllIssues = createAsyncThunk('issues/getAllIssues', async (_, { rejectWithValue }) => {
   try {
     const response = await issueService.getAllIssues();
+    // console.log(response)
     return response;
   } catch (error) {
     return rejectWithValue(error);
@@ -29,7 +31,7 @@ export const getMyIssues = createAsyncThunk('issues/getMyIssues', async (_, { re
   }
 });
 
-export const getHighSeverityIssues = createAsyncThunk('issues/getHighSeverityIssues', async (_, { rejectWithValue }) => {
+export const getHighSeverityIssues = createAsyncThunk('issues/high', async (_, { rejectWithValue }) => {
   try {
     const response = await issueService.getHighSeverityIssues();
     return response;
@@ -41,6 +43,8 @@ export const getHighSeverityIssues = createAsyncThunk('issues/getHighSeverityIss
 export const getIssueById = createAsyncThunk('issues/getIssueById', async (id, { rejectWithValue }) => {
   try {
     const response = await issueService.getIssueById(id);
+    console.log(id)
+    console.log(response)
     return response;
   } catch (error) {
     return rejectWithValue(error);
@@ -74,7 +78,7 @@ export const updateIssueStatus = createAsyncThunk('issues/updateIssueStatus', as
   }
 });
 
-export const getResolvedIssues = createAsyncThunk('issues/getResolvedIssues', async (_, { rejectWithValue }) => {
+export const getResolvedIssues = createAsyncThunk('issues/success', async (_, { rejectWithValue }) => {
   try {
     const response = await issueService.getResolvedIssues();
     return response;
@@ -107,10 +111,10 @@ const issueSlice = createSlice({
   extraReducers: (builder) => {
     // Create Issue
     builder
-      .addCase(createIssue.pending, (指標: state => {
+      .addCase(createIssue.pending, ( (state) => {
         state.loading = true;
         state.error = null;
-      })
+      }))
       .addCase(createIssue.fulfilled, (state, action) => {
         state.loading = false;
         state.issues.push(action.payload);

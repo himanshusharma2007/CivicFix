@@ -23,6 +23,7 @@ export const login = createAsyncThunk('auth/login', async (credentials, { reject
 export const getProfile = createAsyncThunk('auth/getProfile', async (_, { rejectWithValue }) => {
   try {
     const response = await authService.getProfile();
+    console.log('user', response)
     return response;
   } catch (error) {
     return rejectWithValue(error);
@@ -90,7 +91,7 @@ const authSlice = createSlice({
       })
       .addCase(getProfile.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload.user;
+        state.user = action.payload;
         state.isAuthenticated = true;
       })
       .addCase(getProfile.rejected, (state, action) => {
