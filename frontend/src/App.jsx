@@ -1,22 +1,28 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser } from './redux/authSlice';
 
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Navbar from './components/Navbar';
+import Home from './pages/home/Home';
+import Register from './pages/auth/Register';
+import Login from './pages/auth/Login';
+import Profile from './pages/profile/Profile';
+import RaiseIssuePage from './components/RaiseIssue';
+import IssueDetails from './pages/issue/IssueDetails';
 function App() {
-  const dispatch = useDispatch();
-  const { user, loading } = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    dispatch(fetchUser());
-  }, [dispatch]);
-
-  if (loading) return <div>Loading session...</div>;
 
   return (
-    <div>
-      <h1>Welcome {user ? user.name : 'Guest'}</h1>
-      {/* Your routes/components */}
-    </div>
+   <BrowserRouter>
+    <Navbar />
+    <Routes>
+      <Route path='/register' element={<Register />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/' element={<Home />}/>
+      <Route path='/profile' element={<Profile />} />
+      <Route path='/raise-issue' element={<RaiseIssuePage />} />
+      <Route path='/issue/:id' element={<IssueDetails />} />
+    </Routes>
+   </BrowserRouter>
   );
 }
 

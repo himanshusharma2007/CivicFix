@@ -44,6 +44,7 @@ exports.getAllIssues = async (req, res) => {
   try {
     const issues = await Issue.find()
       .populate("user", "name")
+      .populate("comments.user", "name")
       .sort({ createdAt: -1 });
     res.json(issues);
   } catch (error) {
