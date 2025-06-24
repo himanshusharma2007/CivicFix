@@ -13,7 +13,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: "http://localhost:5174",
+  origin: "https://civic-fix-tau.vercel.app",
   credentials: true, // Allow cookies to be sent with requests
 }));
 app.use(express.json());
