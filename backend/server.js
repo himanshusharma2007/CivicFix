@@ -13,7 +13,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "https://civicfix-hilv.onrender.com",
   credentials: true, // Allow cookies to be sent with requests
 }));
 app.use(express.json());

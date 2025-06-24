@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create Axios instance
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api', // replace with your backend URL
+  baseURL: 'https://civicfix-hilv.onrender.com/api', // replace with your backend URL
   withCredentials: true, // send HTTP-only cookies
 });
 
